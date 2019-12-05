@@ -13,20 +13,20 @@ TagManager:
   - UI
   - 
   - 
+  - Enemies
+  - Player
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Foreground 3
+  - Foreground 2
+  - Foreground 1
+  - Ground
+  - Background 1
+  - Background 2
+  - Background 3
+  - Background 4
+  - Background 5
   - 
   - 
   - 
