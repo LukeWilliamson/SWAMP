@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
     Rigidbody2D rigBod;
-    bool grounded;
+    [HideInInspector]
+    public bool grounded;
     BoxCollider2D playerCol;
     public LayerMask groundLayer;
 
