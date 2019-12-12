@@ -119,7 +119,6 @@ public class CameraController : MonoBehaviour
             }
             else
             {
-
                 if (roomBounds.canLook && player.grounded)
                 {
                     if (Mathf.Abs(transform.position.y - player.transform.position.y) + lookHeight > 4.5f)
