@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+<<<<<<< HEAD
+    // Climbing wall values
+    public bool onWall;
+    
+
+    // Moving and jumping values
+    public float moveSpeed;
+    public float jumpForce;
+    Rigidbody2D rigBod;
+    bool grounded;
+    BoxCollider2D playerCol;
+    public LayerMask groundLayer;
+    // Double jump values
+    float JumpTimeCounter;
+    public float jumpTime;
+=======
 	public float moveSpeed = 7;
 	public float swimSpeed = 7;
     public float jumpForce = 10;
@@ -29,13 +45,19 @@ public class PlayerController : MonoBehaviour
 
 	float jumpTimeCounter;
     float wallJumpTimeCounter;
+>>>>>>> 4abf12e6bd64ecfdbbb1ab08d49127f70f8412c7
     bool isJumping;
 	bool wallJumping;
 	bool leftWall;
 	bool rightWall;
     int jumps;
     float waitToJump;
+<<<<<<< HEAD
+    // Hitting head values
+    bool hitHead;
+=======
 	float groundDist = 0.05f;
+>>>>>>> 4abf12e6bd64ecfdbbb1ab08d49127f70f8412c7
 
     void Start()
     {
@@ -97,6 +119,81 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+<<<<<<< HEAD
+        if (waitToJump >= 0)
+        {
+            waitToJump -= Time.deltaTime;
+        }
+        if(waitToJump <= 0)
+        { 
+            grounded = Physics2D.OverlapCircle(new Vector2(playerCol.bounds.center.x, playerCol.bounds.min.y), 0.05f, groundLayer);
+        }
+
+        hitHead = Physics2D.OverlapCircle(new Vector2(playerCol.bounds.center.x, playerCol.bounds.max.y), 0.05f, groundLayer);
+
+        if(hitHead)
+        {
+            isJumping = false;
+        }
+
+        if (jumps == 2)
+        {
+            GetComponentInChildren<SpriteRenderer>().color = new Color(1, 0, 1);
+        }
+        else if (jumps == 1)
+        {
+            GetComponentInChildren<SpriteRenderer>().color = new Color(1, 0, 0);
+        }
+        else
+        {
+            GetComponentInChildren<SpriteRenderer>().color = new Color(0, 1, 1);
+        }
+
+        if (grounded)
+        {
+            if (Stats.canDoubleJump)
+            {
+                jumps = 2;
+            }
+            else
+            {
+                jumps = 1;
+            }
+        }
+
+        if (jumps != 0 && Input.GetButtonDown("Jump"))
+        {
+            jumps -= 1;
+            isJumping = true;
+            grounded = false;
+            waitToJump = 0.25f;
+            JumpTimeCounter = jumpTime;
+            rigBod.velocity = Vector2.up * jumpForce;
+        }
+
+        if (Input.GetButton("Jump") && isJumping)
+        {
+            if (JumpTimeCounter > 0)
+            {
+                rigBod.velocity = Vector2.up * jumpForce;
+                JumpTimeCounter -= Time.deltaTime;
+            }
+            else
+            {
+                isJumping = false;
+            }
+        }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            isJumping = false;
+        }
+
+        if (Input.GetButtonUp("w") && onWall)
+        {
+
+        }
+=======
 		CheckCollision();
 
 		if(inWater && Stats.canFreeSwim)
@@ -127,6 +224,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		AnimatePlayer();
+>>>>>>> 4abf12e6bd64ecfdbbb1ab08d49127f70f8412c7
     }
 
 	void Jump ()
