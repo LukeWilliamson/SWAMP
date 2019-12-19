@@ -74,6 +74,26 @@ public class CameraController : MonoBehaviour
 
     void AreBoundsBlocked()
     {
+        if (!roomBounds.blockXMax)
+        {
+            maxX = player.transform.position.x;
+        }
+
+        if (!roomBounds.blockXMin)
+        {
+            minX = player.transform.position.x;
+        }
+
+        if (!roomBounds.blockYMax)
+        {
+            maxY = player.transform.position.y;
+        }
+
+        if (!roomBounds.blockYMin)
+        {
+            minY = player.transform.position.y;
+        }
+
         if (!roomBounds.lockX)
         {
             xPos = Mathf.Clamp(player.gameObject.transform.position.x, minX, maxX);
@@ -90,16 +110,6 @@ public class CameraController : MonoBehaviour
         else
         {
             yPos = roomBounds.pos.y;
-        }
-
-        if (!roomBounds.blockX)
-        {
-            xPos = player.transform.position.x;
-        }
-
-        if (!roomBounds.blockY)
-        {
-            yPos = player.transform.position.y;
         }
     }
 

@@ -13,8 +13,10 @@ public class CameraBoundaries : MonoBehaviour
     public bool lockX = false;
     public bool lockY = false;
 
-    public bool blockX = true;
-    public bool blockY = true;
+    public bool blockXMax = true;
+    public bool blockYMax = true;
+    public bool blockXMin = true;
+    public bool blockYMin = true;
 
     public Vector2 pos;
     public float moveSpeed = 8;
