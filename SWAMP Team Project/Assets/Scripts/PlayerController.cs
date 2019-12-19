@@ -174,21 +174,21 @@ public class PlayerController : MonoBehaviour
 
 	void WallJump()
 	{
+        if ((hitWallRight || hitWallLeft) && Input.GetKey(KeyCode.RightControl))
+        {
+            rigBod.gravityScale = 0;
+            rigBod.velocity = Vector2.zero;
+        }
+        else
+        {
+            rigBod.gravityScale = 5;
+        }
+
 		if(Input.GetAxisRaw("Horizontal") != 0)
 		{
 			if(hitWallRight || hitWallLeft)
 			{
 				ClampFallSpeed(-5);
-
-				if(Input.GetKey(KeyCode.RightControl))
-				{
-					rigBod.gravityScale = 0;
-					rigBod.velocity = Vector2.zero;
-				}
-				else
-				{
-					rigBod.gravityScale = 5;
-				}
 			}
 
 			if(hitWallRight && Input.GetButtonDown("Jump"))
@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 
-		if (wallJumping)
+        if (wallJumping)
 		{
 			if (wallJumpTimeCounter > 0)
 			{
