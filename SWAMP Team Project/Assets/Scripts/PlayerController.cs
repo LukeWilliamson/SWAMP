@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // Climbing wall values
+    public bool onWall;
+    
+
+    // Moving and jumping values
     public float moveSpeed;
     public float jumpForce;
     Rigidbody2D rigBod;
     bool grounded;
     BoxCollider2D playerCol;
     public LayerMask groundLayer;
-
+    // Double jump values
     float JumpTimeCounter;
     public float jumpTime;
     bool isJumping;
     int jumps;
     float waitToJump;
-
+    // Hitting head values
     bool hitHead;
 
     void Start()
@@ -99,6 +104,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonUp("Jump"))
         {
             isJumping = false;
+        }
+
+        if (Input.GetButtonUp("w") && onWall)
+        {
+
         }
     }
 
