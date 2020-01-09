@@ -4,22 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-<<<<<<< HEAD
-    // Climbing wall values
-    public bool onWall;
-    
-
-    // Moving and jumping values
-    public float moveSpeed;
-    public float jumpForce;
-    Rigidbody2D rigBod;
-    bool grounded;
-    BoxCollider2D playerCol;
-    public LayerMask groundLayer;
-    // Double jump values
-    float JumpTimeCounter;
-    public float jumpTime;
-=======
 	public float moveSpeed = 7;
 	public float swimSpeed = 7;
     public float jumpForce = 10;
@@ -36,7 +20,9 @@ public class PlayerController : MonoBehaviour
 
 	[HideInInspector]
 	public bool inWater;
-	[HideInInspector]
+    [HideInInspector]
+    public bool onWall;
+    [HideInInspector]
 	public bool scalingBackground;
 
 	Rigidbody2D rigBod;
@@ -45,19 +31,13 @@ public class PlayerController : MonoBehaviour
 
 	float jumpTimeCounter;
     float wallJumpTimeCounter;
->>>>>>> 4abf12e6bd64ecfdbbb1ab08d49127f70f8412c7
     bool isJumping;
 	bool wallJumping;
 	bool leftWall;
 	bool rightWall;
     int jumps;
     float waitToJump;
-<<<<<<< HEAD
-    // Hitting head values
-    bool hitHead;
-=======
 	float groundDist = 0.05f;
->>>>>>> 4abf12e6bd64ecfdbbb1ab08d49127f70f8412c7
 
     void Start()
     {
@@ -119,7 +99,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-<<<<<<< HEAD
         if (waitToJump >= 0)
         {
             waitToJump -= Time.deltaTime;
@@ -167,16 +146,16 @@ public class PlayerController : MonoBehaviour
             isJumping = true;
             grounded = false;
             waitToJump = 0.25f;
-            JumpTimeCounter = jumpTime;
+            jumpTimeCounter = jumpTime;
             rigBod.velocity = Vector2.up * jumpForce;
         }
 
         if (Input.GetButton("Jump") && isJumping)
         {
-            if (JumpTimeCounter > 0)
+            if (jumpTimeCounter > 0)
             {
                 rigBod.velocity = Vector2.up * jumpForce;
-                JumpTimeCounter -= Time.deltaTime;
+                jumpTimeCounter -= Time.deltaTime;
             }
             else
             {
@@ -189,11 +168,6 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
         }
 
-        if (Input.GetButtonUp("w") && onWall)
-        {
-
-        }
-=======
 		CheckCollision();
 
 		if(inWater && Stats.canFreeSwim)
@@ -224,7 +198,6 @@ public class PlayerController : MonoBehaviour
 		}
 
 		AnimatePlayer();
->>>>>>> 4abf12e6bd64ecfdbbb1ab08d49127f70f8412c7
     }
 
 	void Jump ()
