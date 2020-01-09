@@ -23,10 +23,12 @@ public class CameraBoundaries : MonoBehaviour
 
     void OnDrawGizmos()
     {
+        #if UNITY_EDITOR
         if (showBounds)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(transform.position, size);
         }
+        #endif
     }
 }

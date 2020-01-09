@@ -99,105 +99,108 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (waitToJump >= 0)
+        if (Stats.canMove)
         {
-            waitToJump -= Time.deltaTime;
-        }
-        if(waitToJump <= 0)
-        { 
-            grounded = Physics2D.OverlapCircle(new Vector2(playerCol.bounds.center.x, playerCol.bounds.min.y), 0.05f, groundLayer);
-        }
-
-        hitHead = Physics2D.OverlapCircle(new Vector2(playerCol.bounds.center.x, playerCol.bounds.max.y), 0.05f, groundLayer);
-
-        if(hitHead)
-        {
-            isJumping = false;
-        }
-
-        if (jumps == 2)
-        {
-            GetComponentInChildren<SpriteRenderer>().color = new Color(1, 0, 1);
-        }
-        else if (jumps == 1)
-        {
-            GetComponentInChildren<SpriteRenderer>().color = new Color(1, 0, 0);
-        }
-        else
-        {
-            GetComponentInChildren<SpriteRenderer>().color = new Color(0, 1, 1);
-        }
-
-        if (grounded)
-        {
-            if (Stats.canDoubleJump)
+            if (waitToJump >= 0)
             {
-                jumps = 2;
+                waitToJump -= Time.deltaTime;
             }
-            else
+            if (waitToJump <= 0)
             {
-                jumps = 1;
+                grounded = Physics2D.OverlapCircle(new Vector2(playerCol.bounds.center.x, playerCol.bounds.min.y), 0.05f, groundLayer);
             }
-        }
 
-        if (jumps != 0 && Input.GetButtonDown("Jump"))
-        {
-            jumps -= 1;
-            isJumping = true;
-            grounded = false;
-            waitToJump = 0.25f;
-            jumpTimeCounter = jumpTime;
-            rigBod.velocity = Vector2.up * jumpForce;
-        }
+            hitHead = Physics2D.OverlapCircle(new Vector2(playerCol.bounds.center.x, playerCol.bounds.max.y), 0.05f, groundLayer);
 
-        if (Input.GetButton("Jump") && isJumping)
-        {
-            if (jumpTimeCounter > 0)
-            {
-                rigBod.velocity = Vector2.up * jumpForce;
-                jumpTimeCounter -= Time.deltaTime;
-            }
-            else
+            if (hitHead)
             {
                 isJumping = false;
             }
+
+            if (jumps == 2)
+            {
+                GetComponentInChildren<SpriteRenderer>().color = new Color(1, 0, 1);
+            }
+            else if (jumps == 1)
+            {
+                GetComponentInChildren<SpriteRenderer>().color = new Color(1, 0, 0);
+            }
+            else
+            {
+                GetComponentInChildren<SpriteRenderer>().color = new Color(0, 1, 1);
+            }
+
+            if (grounded)
+            {
+                if (Stats.canDoubleJump)
+                {
+                    jumps = 2;
+                }
+                else
+                {
+                    jumps = 1;
+                }
+            }
+
+            if (jumps != 0 && Input.GetButtonDown("Jump"))
+            {
+                jumps -= 1;
+                isJumping = true;
+                grounded = false;
+                waitToJump = 0.25f;
+                jumpTimeCounter = jumpTime;
+                rigBod.velocity = Vector2.up * jumpForce;
+            }
+
+            if (Input.GetButton("Jump") && isJumping)
+            {
+                if (jumpTimeCounter > 0)
+                {
+                    rigBod.velocity = Vector2.up * jumpForce;
+                    jumpTimeCounter -= Time.deltaTime;
+                }
+                else
+                {
+                    isJumping = false;
+                }
+            }
+
+            if (Input.GetButtonUp("Jump"))
+            {
+                isJumping = false;
+            }
+
+            CheckCollision();
+
+            if (inWater && Stats.canFreeSwim)
+            {
+
+            }
+            else if (scalingBackground && Input.GetKey(KeyCode.LeftControl) && Stats.canScaleBackground)
+            {
+
+            }
+            else
+            {
+                if (grounded && Input.GetKey(KeyCode.LeftShift))
+                {
+                    spiderForm = true;
+                }
+                else
+                {
+                    spiderForm = false;
+                }
+
+                if (!wallJumping)
+                {
+                    Jump();
+                }
+
+                WallJump();
+            }
+
+            AnimatePlayer();
         }
-
-        if (Input.GetButtonUp("Jump"))
-        {
-            isJumping = false;
-        }
-
-		CheckCollision();
-
-		if(inWater && Stats.canFreeSwim)
-		{
-			
-		}
-		else if(scalingBackground && Input.GetKey(KeyCode.LeftControl) && Stats.canScaleBackground)
-		{
-			
-		}
-		else
-		{
-			if(grounded && Input.GetKey(KeyCode.LeftShift))
-			{
-				spiderForm = true;
-			}
-			else
-			{
-				spiderForm = false;
-			}
-
-			if(!wallJumping)
-			{
-				Jump();
-			}
-
-			WallJump();
-		}
-
-		AnimatePlayer();
     }
 
 	void Jump ()
