@@ -48,25 +48,28 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-		if(inWater)
-		{
-			Swim(20);
-		}
-		else if(scalingBackground && Input.GetKey(KeyCode.LeftControl) && Stats.canScaleBackground)
-		{
-			Swim(0);
-		}
-		else
-		{
-			Walk();
-		}
+        if (Stats.canMove)
+        {
+            if (inWater)
+            {
+                Swim(20);
+            }
+            else if (scalingBackground && Input.GetKey(KeyCode.LeftControl) && Stats.canScaleBackground)
+            {
+                Swim(0);
+            }
+            else
+            {
+                Walk();
+            }
 
-		ClampFallSpeed(-15);
+            ClampFallSpeed(-15);
 
-		if(!grounded)
-		{
-			WallJump();
-		}
+            if (!grounded)
+            {
+                WallJump();
+            }
+        }
     }
 
 	void Walk()

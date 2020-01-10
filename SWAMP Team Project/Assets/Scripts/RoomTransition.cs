@@ -11,7 +11,12 @@ public class RoomTransition : MonoBehaviour
     GameObject blackScreen;
     PlayerController player;
 
-    float fadeTime = 100;
+    public bool up;
+    public bool down;
+    public bool left;
+    public bool right;
+
+    float fadeTime = 1;
     bool loadRoom = false;
 
     void Start()
@@ -50,8 +55,30 @@ public class RoomTransition : MonoBehaviour
         if (loadRoom)
         {
             fadeTime -= Time.deltaTime;
-            player.transform.position += new Vector3(0, 0, 0);
-            if (fadeTime < Time.deltaTime)
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            blackScreen.GetComponent<Image>().color = Color.Lerp(blackScreen.GetComponent<Image>().color, Color.black, Time.deltaTime * 4);
+
+            if (right)
+            {
+                player.transform.position += new Vector3(0.1f, 0, 0);
+            }
+
+            if (left)
+            {
+                player.transform.position += new Vector3(-0.1f, 0, 0);
+            }
+
+            if (up)
+            {
+                player.transform.position += new Vector3(0, 0.1f, 0);
+            }
+
+            if (down)
+            {
+                player.transform.position += new Vector3(0, -0.1f, 0);
+            }
+
+            if (fadeTime < 0)
             {
                 SceneManager.LoadScene(roomToLoad);
             }
