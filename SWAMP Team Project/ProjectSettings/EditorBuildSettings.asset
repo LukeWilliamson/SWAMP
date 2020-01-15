@@ -5,13 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/New York Scenes/NewYorkMain.unity
-    guid: f8c732af16d3c3c46b9cb6a5d079afe0
+    path: Assets/Scenes/New York Scenes/Tutorial.unity
+    guid: 4264dca75525c9844b585340eccf790f
   - enabled: 1
-    path: Assets/Scenes/New York Scenes/TestScene.unity
-    guid: b7909c22cbe978645aa9b4212882eb14
+    path: Assets/Scenes/New York Scenes/StreetsBelowRoofTops.unity
+    guid: 83b3a6a2f9c1c2445bfc225073c65a3b
+  - enabled: 1
+    path: Assets/Scenes/UI Scenes/Audio Menu.unity
+    guid: 75d302a6b34a9fe4db3b501811d813ac
+  - enabled: 1
+    path: Assets/Scenes/UI Scenes/Controller Menu.unity
+    guid: ba90f5e75dec93b4581deec538bde143
+  - enabled: 1
+    path: Assets/Scenes/UI Scenes/Options Menu.unity
+    guid: 24bfd7514cebcdb44b857e9952595d2d
+  - enabled: 1
+    path: Assets/Scenes/UI Scenes/Pause Menu.unity
+    guid: 8e95f6b9c34a37441a36df60df591079
   m_configObjects: {}

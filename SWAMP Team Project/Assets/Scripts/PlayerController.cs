@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
 		rigBod = GetComponent<Rigidbody2D>();
         playerCol = GetComponent<BoxCollider2D>();
 		anim = GetComponent<Animator>();
+
     }
 
     void FixedUpdate()
@@ -54,10 +55,10 @@ public class PlayerController : MonoBehaviour
             {
                 Swim(20);
             }
-            else if (scalingBackground && Input.GetKey(KeyCode.LeftControl) && Stats.canScaleBackground)
+			/*else if (scalingBackground && InputManager.HoldCrouch() && Stats.canScaleBackground)
             {
                 Swim(0);
-            }
+            }*/
             else
             {
                 Walk();
@@ -75,7 +76,7 @@ public class PlayerController : MonoBehaviour
 	void Walk()
 	{
 		rigBod.gravityScale = 5;
-		rigBod.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, rigBod.velocity.y);
+		rigBod.velocity = new Vector2(InputManager.HoldHorizontal() * moveSpeed, rigBod.velocity.y);
 	}
 
 	void Swim (float gravityModifier)
@@ -84,11 +85,11 @@ public class PlayerController : MonoBehaviour
 
 		if(Stats.canFreeSwim)
 		{
-			rigBod.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * swimSpeed;
+			rigBod.velocity = new Vector2(InputManager.HoldHorizontal(), InputManager.HoldVertical()) * swimSpeed;
 		}
 		else
 		{
-			rigBod.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, rigBod.velocity.y);
+			rigBod.velocity = new Vector2(InputManager.HoldHorizontal() * moveSpeed, rigBod.velocity.y);
 		}
 	}
 
@@ -120,19 +121,6 @@ public class PlayerController : MonoBehaviour
                 isJumping = false;
             }
 
-            if (jumps == 2)
-            {
-                GetComponentInChildren<SpriteRenderer>().color = new Color(1, 0, 1);
-            }
-            else if (jumps == 1)
-            {
-                GetComponentInChildren<SpriteRenderer>().color = new Color(1, 0, 0);
-            }
-            else
-            {
-                GetComponentInChildren<SpriteRenderer>().color = new Color(0, 1, 1);
-            }
-
             if (grounded)
             {
                 if (Stats.canDoubleJump)
@@ -145,7 +133,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (jumps != 0 && Input.GetButtonDown("Jump"))
+			if (jumps != 0 && InputManager.PressJump())
             {
                 jumps -= 1;
                 isJumping = true;
@@ -155,7 +143,7 @@ public class PlayerController : MonoBehaviour
                 rigBod.velocity = Vector2.up * jumpForce;
             }
 
-            if (Input.GetButton("Jump") && isJumping)
+			if (InputManager.HoldJump() && isJumping)
             {
                 if (jumpTimeCounter > 0)
                 {
@@ -168,7 +156,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (Input.GetButtonUp("Jump"))
+			if (InputManager.ReleaseJump())
             {
                 isJumping = false;
             }
@@ -185,7 +173,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                if (grounded && Input.GetKey(KeyCode.LeftShift))
+				if (grounded && InputManager.HoldCrouch())
                 {
                     spiderForm = true;
                 }
@@ -220,7 +208,7 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 
-		if (jumps != 0 && Input.GetButtonDown("Jump"))
+		if (jumps != 0 && InputManager.PressJump())
 		{
 			jumps -= 1;
 			isJumping = true;
@@ -230,7 +218,7 @@ public class PlayerController : MonoBehaviour
 			rigBod.velocity = Vector2.up * jumpForce;
 		}
 
-		if (Input.GetButton("Jump") && isJumping && !wallJumping)
+		if (InputManager.HoldJump() && isJumping && !wallJumping)
 		{
 			if (jumpTimeCounter > 0)
 			{
@@ -243,7 +231,7 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 
-		if (Input.GetButtonUp("Jump"))
+		if (InputManager.ReleaseJump())
 		{
 			isJumping = false;
 		}
@@ -261,14 +249,14 @@ public class PlayerController : MonoBehaviour
             rigBod.gravityScale = 5;
         }
 
-		if(Input.GetAxisRaw("Horizontal") != 0)
+		if(InputManager.HoldHorizontal() != 0)
 		{
 			if(hitWallRight || hitWallLeft)
 			{
 				ClampFallSpeed(-5);
 			}
 
-			if(hitWallRight && Input.GetButtonDown("Jump"))
+			if(hitWallRight && InputManager.PressJump())
 			{
 				rightWall = true;
 				wallJumping = true;
@@ -276,7 +264,7 @@ public class PlayerController : MonoBehaviour
 				rigBod.velocity = new Vector2(-jumpForce, jumpForce);
 			}
 
-			if(hitWallLeft && Input.GetButtonDown("Jump"))
+			if(hitWallLeft && InputManager.PressJump())
 			{
 				leftWall = true;
 				wallJumping = true;
@@ -332,10 +320,15 @@ public class PlayerController : MonoBehaviour
 		
 	void AnimatePlayer()
 	{
-		anim.SetFloat("Move", Input.GetAxisRaw("Horizontal"));
+		anim.SetFloat("Move", InputManager.HoldHorizontal());
 		anim.SetBool("Grounded", grounded);
 		anim.SetBool("Spider", spiderForm);
-		anim.SetFloat("Look", Input.GetAxisRaw("Vertical"));
+		anim.SetFloat("Look", InputManager.HoldHorizontal());
+	}
+
+	public void Die ()
+	{
+		rigBod.velocity = Vector2.zero;
 	}
 
 #if UNITY_EDITOR

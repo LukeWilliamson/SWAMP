@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class CameraController : MonoBehaviour
     bool noBounds;
     float camSpeed = 8;
 
+	[HideInInspector]
+	public GameObject blackScreen;
+
     void Start()
     {
         bounds = FindObjectsOfType<CameraBoundaries>();
@@ -36,7 +40,32 @@ public class CameraController : MonoBehaviour
 
         height = Camera.main.orthographicSize;
         width = height * Camera.main.aspect;
+
+		blackScreen = new GameObject("Black Screen");
+		blackScreen.AddComponent<Image>();
+		blackScreen.transform.parent = FindObjectOfType<Canvas>().transform;
+
+		blackScreen.GetComponent<RectTransform>().anchorMin = Vector2.zero;
+		blackScreen.GetComponent<RectTransform>().anchorMax = Vector2.one;
+
+		blackScreen.GetComponent<RectTransform>().offsetMin = Vector2.zero;
+		blackScreen.GetComponent<RectTransform>().offsetMax = Vector2.zero;
+		blackScreen.GetComponent<Image>().raycastTarget = false;
+
+		blackScreen.GetComponent<Image>().color = Color.black;
+
+		StartCoroutine(FadeIn());
     }
+
+	IEnumerator FadeIn ()
+	{
+		while(blackScreen.GetComponent<Image>().color != Color.clear)
+		{
+			transform.position = new Vector3(xPos, yPos, -10);
+			blackScreen.GetComponent<Image>().color = Color.Lerp(blackScreen.GetComponent<Image>().color, Color.clear, Time.deltaTime * 4);
+			yield return null;
+		}
+	}
 
     void FixedUpdate()
     {
