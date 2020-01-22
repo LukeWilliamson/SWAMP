@@ -31,7 +31,15 @@ public class RoomTransition : MonoBehaviour
 
 		if(doorID == Stats.globalDoorID)
 		{
-			player.transform.position = spawnPos;
+			if(left || right)
+			{
+				player.transform.position = new Vector3(spawnPos.x, spawnPos.y + Stats.doorOffset);
+			}
+
+			if(up || down)
+			{
+				player.transform.position = new Vector3(spawnPos.x + Stats.doorOffset, spawnPos.y);
+			}
 		}
     }
 
@@ -44,6 +52,27 @@ public class RoomTransition : MonoBehaviour
         {
             loadRoom = true;
 			Stats.globalDoorID = doorID;
+
+			if(left)
+			{
+				Stats.doorOffset = -Mathf.Abs(player.transform.position.x - spawnPos.x);
+			}
+
+			if(right)
+			{
+				Stats.doorOffset = Mathf.Abs(player.transform.position.x - spawnPos.x);
+			}
+
+			if(up)
+			{
+				Stats.doorOffset = Mathf.Abs(player.transform.position.y - spawnPos.y);
+			}
+
+			if(down)
+			{
+				Stats.doorOffset = -Mathf.Abs(player.transform.position.y - spawnPos.y);
+			}
+
             Stats.canMove = false;
         }
     }
