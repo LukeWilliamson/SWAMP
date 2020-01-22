@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
             if (!grounded)
             {
-                WallJump();
+                //WallJump();
             }
         }
     }
@@ -187,7 +187,7 @@ public class PlayerController : MonoBehaviour
                     Jump();
                 }
 
-                WallJump();
+                //WallJump();
             }
 
             AnimatePlayer();
