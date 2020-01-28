@@ -5,279 +5,219 @@ using UnityEngine.UI;
 
 public class InputMapper : MonoBehaviour 
 {
+	// Input Values
 	public Button leftButton;
 	public Button rightButton;
+
 	public Button upButton;
 	public Button downButton;
+
 	public Button jumpButton;
 	public Button attackButton;
 	public Button dashButton;
 	public Button crouchButton;
+	public Button pauseButton;
+	public Button mapButton;
 
+	// Default Input Values
 	KeyCode defaultLeft = KeyCode.A;
 	KeyCode defaultRight = KeyCode.D;
+	string defaultHorizontal = "Joystick Axis 1";
+
 	KeyCode defaultUp = KeyCode.W;
 	KeyCode defaultDown = KeyCode.S;
+	string defaultVertical = "Joystick Axis 2";
+
 	KeyCode defaultJump = KeyCode.Space;
-	KeyCode defaultAttack = KeyCode.E;
+	KeyCode defaultAttack = KeyCode.Mouse0;
 	KeyCode defaultDash = KeyCode.LeftShift;
 	KeyCode defaultCrouch = KeyCode.LeftControl;
+	KeyCode defaultPause = KeyCode.Escape;
+	KeyCode defaultMap = KeyCode.E;
 
+	// Accepting Input Booleans
 	bool listeningLeft;
 	bool listeningRight;
+	bool listeningHor;
+
 	bool listeningUp;
 	bool listeningDown;
+	bool listeningVert;
+
 	bool listeningJump;
 	bool listeningAttack;
 	bool listeningDash;
 	bool listeningCrouch;
+	bool listeningPause;
+	bool listeningMap;
 
 	void Start ()
 	{
-		leftButton.GetComponentInChildren<Text>().text = "" + InputManager.left;
-		rightButton.GetComponentInChildren<Text>().text = "" + InputManager.right;
-		upButton.GetComponentInChildren<Text>().text = "" + InputManager.up;
-		downButton.GetComponentInChildren<Text>().text = "" + InputManager.down;
+		SetText();
+	}
+
+	void SetText ()
+	{
+		if(leftButton.GetComponentInChildren<Text>().text != InputManager.horizontal)
+		{
+			leftButton.GetComponentInChildren<Text>().text = "" + InputManager.left;
+			rightButton.GetComponentInChildren<Text>().text = "" + InputManager.right;
+		}
+
+		if(upButton.GetComponentInChildren<Text>().text != InputManager.vertical)
+		{
+			upButton.GetComponentInChildren<Text>().text = "" + InputManager.up;
+			downButton.GetComponentInChildren<Text>().text = "" + InputManager.down;
+		}
+
 		jumpButton.GetComponentInChildren<Text>().text = "" + InputManager.jump;
 		attackButton.GetComponentInChildren<Text>().text = "" + InputManager.attack;
 		dashButton.GetComponentInChildren<Text>().text = "" + InputManager.dash;
 		crouchButton.GetComponentInChildren<Text>().text = "" + InputManager.crouch;
+		pauseButton.GetComponentInChildren<Text>().text = "" + InputManager.pause;
+		mapButton.GetComponentInChildren<Text>().text = "" + InputManager.map;
+	}
+
+	void StopListening ()
+	{
+		listeningLeft = false;
+		listeningRight = false;
+		listeningHor = false;
+
+		listeningUp = false;
+		listeningDown = false;
+		listeningVert = false;
+
+		listeningJump = false;
+		listeningAttack = false;	
+		listeningDash = false;	
+		listeningCrouch = false;
+		listeningPause = false;
+		listeningMap = false;
 	}
 
 	public void RestoreToDefaults () 
 	{
 		InputManager.left = defaultLeft;
 		InputManager.right = defaultRight;
+		InputManager.horizontal = defaultHorizontal;
+
 		InputManager.up = defaultUp;
 		InputManager.down = defaultDown;
+		InputManager.vertical = defaultVertical;
+
 		InputManager.jump = defaultJump;
 		InputManager.attack = defaultAttack;
 		InputManager.dash = defaultDash;
 		InputManager.crouch = defaultCrouch;
+		InputManager.pause = defaultPause;
+		InputManager.map = defaultMap;
+
+		SetText();
 	}
 
 	public void ChangeLeft ()
 	{
+		SetText();
+		StopListening();
+
+		listeningHor = true;
 		listeningLeft = true;
+
 		leftButton.GetComponentInChildren<Text>().text = "<- Press Any Key ->";
-
-		listeningRight = false;
-		rightButton.GetComponentInChildren<Text>().text = "" + InputManager.right;
-
-		listeningUp = false;
-		upButton.GetComponentInChildren<Text>().text = "" + InputManager.up;
-
-		listeningDown = false;
-		downButton.GetComponentInChildren<Text>().text = "" + InputManager.down;
-
-		listeningJump = false;
-		jumpButton.GetComponentInChildren<Text>().text = "" + InputManager.jump;
-
-		listeningAttack = false;
-		attackButton.GetComponentInChildren<Text>().text = "" + InputManager.attack;
-
-		listeningDash = false;
-		dashButton.GetComponentInChildren<Text>().text = "" + InputManager.dash;
-
-		listeningCrouch = false;
-		crouchButton.GetComponentInChildren<Text>().text = "" + InputManager.crouch;
-
 	}
 
 	public void ChangeRight ()
 	{
-		listeningLeft = false;
-		leftButton.GetComponentInChildren<Text>().text = "" + InputManager.left;
+		SetText();
+		StopListening();
 
+		listeningHor = true;
 		listeningRight = true;
+
 		rightButton.GetComponentInChildren<Text>().text = "<- Press Any Key ->";
-
-		listeningUp = false;
-		upButton.GetComponentInChildren<Text>().text = "" + InputManager.up;
-
-		listeningDown = false;
-		downButton.GetComponentInChildren<Text>().text = "" + InputManager.down;
-
-		listeningJump = false;
-		jumpButton.GetComponentInChildren<Text>().text = "" + InputManager.jump;
-
-		listeningAttack = false;
-		attackButton.GetComponentInChildren<Text>().text = "" + InputManager.attack;
-
-		listeningDash = false;
-		dashButton.GetComponentInChildren<Text>().text = "" + InputManager.dash;
-
-		listeningCrouch = false;
-		crouchButton.GetComponentInChildren<Text>().text = "" + InputManager.crouch;
-
 	}
 
 	public void ChangeUp ()
 	{
-		listeningLeft = false;
-		leftButton.GetComponentInChildren<Text>().text = "" + InputManager.left;
+		SetText();
+		StopListening();
 
-		listeningRight = false;
-		rightButton.GetComponentInChildren<Text>().text = "" + InputManager.right;
-
+		listeningVert = true;
 		listeningUp = true;
+
 		upButton.GetComponentInChildren<Text>().text = "<- Press Any Key ->";
-
-		listeningDown = false;
-		downButton.GetComponentInChildren<Text>().text = "" + InputManager.down;
-
-		listeningJump = false;
-		jumpButton.GetComponentInChildren<Text>().text = "" + InputManager.jump;
-
-		listeningAttack = false;
-		attackButton.GetComponentInChildren<Text>().text = "" + InputManager.attack;
-
-		listeningDash = false;
-		dashButton.GetComponentInChildren<Text>().text = "" + InputManager.dash;
-
-		listeningCrouch = false;
-		crouchButton.GetComponentInChildren<Text>().text = "" + InputManager.crouch;
-
 	}
 
 	public void ChangeDown ()
 	{
-		listeningLeft = false;
-		leftButton.GetComponentInChildren<Text>().text = "" + InputManager.left;
+		SetText();
+		StopListening();
 
-		listeningRight = false;
-		rightButton.GetComponentInChildren<Text>().text = "" + InputManager.right;
-
-		listeningUp = false;
-		upButton.GetComponentInChildren<Text>().text = "" + InputManager.up;
-
+		listeningVert = true;
 		listeningDown = true;
+
 		downButton.GetComponentInChildren<Text>().text = "<- Press Any Key ->";
-
-		listeningJump = false;
-		jumpButton.GetComponentInChildren<Text>().text = "" + InputManager.jump;
-
-		listeningAttack = false;
-		attackButton.GetComponentInChildren<Text>().text = "" + InputManager.attack;
-
-		listeningDash = false;
-		dashButton.GetComponentInChildren<Text>().text = "" + InputManager.dash;
-
-		listeningCrouch = false;
-		crouchButton.GetComponentInChildren<Text>().text = "" + InputManager.crouch;
-
 	}
 
 	public void ChangeJump ()
 	{
-		listeningLeft = false;
-		leftButton.GetComponentInChildren<Text>().text = "" + InputManager.left;
-
-		listeningRight = false;
-		rightButton.GetComponentInChildren<Text>().text = "" + InputManager.right;
-			
-		listeningUp = false;
-		upButton.GetComponentInChildren<Text>().text = "" + InputManager.up;
-			
-		listeningDown = false;
-		downButton.GetComponentInChildren<Text>().text = "" + InputManager.down;
+		SetText();
+		StopListening();
 
 		listeningJump = true;
-		jumpButton.GetComponentInChildren<Text>().text = "<- Press Any Key ->";
-			
-		listeningAttack = false;
-		attackButton.GetComponentInChildren<Text>().text = "" + InputManager.attack;
-			
-		listeningDash = false;
-		dashButton.GetComponentInChildren<Text>().text = "" + InputManager.dash;
-			
-		listeningCrouch = false;
-		crouchButton.GetComponentInChildren<Text>().text = "" + InputManager.crouch;
 
+		jumpButton.GetComponentInChildren<Text>().text = "<- Press Any Key ->";
 	}
 
 	public void ChangeAttack ()
 	{
-		listeningLeft = false;
-		leftButton.GetComponentInChildren<Text>().text = "" + InputManager.left;
-
-		listeningRight = false;
-		rightButton.GetComponentInChildren<Text>().text = "" + InputManager.right;
-
-		listeningUp = false;
-		upButton.GetComponentInChildren<Text>().text = "" + InputManager.up;
-
-		listeningDown = false;
-		downButton.GetComponentInChildren<Text>().text = "" + InputManager.down;
-
-		listeningJump = false;
-		jumpButton.GetComponentInChildren<Text>().text = "" + InputManager.jump;
+		SetText();
+		StopListening();
 
 		listeningAttack = true;
+
 		attackButton.GetComponentInChildren<Text>().text = "<- Press Any Key ->";
-
-		listeningDash = false;
-		dashButton.GetComponentInChildren<Text>().text = "" + InputManager.dash;
-
-		listeningCrouch = false;
-		crouchButton.GetComponentInChildren<Text>().text = "" + InputManager.crouch;
-
 	}
 
 	public void ChangeDash ()
 	{
-		listeningLeft = false;
-		leftButton.GetComponentInChildren<Text>().text = "" + InputManager.left;
-
-		listeningRight = false;
-		rightButton.GetComponentInChildren<Text>().text = "" + InputManager.right;
-
-		listeningUp = false;
-		upButton.GetComponentInChildren<Text>().text = "" + InputManager.up;
-
-		listeningDown = false;
-		downButton.GetComponentInChildren<Text>().text = "" + InputManager.down;
-
-		listeningJump = false;
-		jumpButton.GetComponentInChildren<Text>().text = "" + InputManager.jump;
-
-		listeningAttack = false;
-		attackButton.GetComponentInChildren<Text>().text = "" + InputManager.attack;
+		SetText();
+		StopListening();
 
 		listeningDash = true;
+
 		dashButton.GetComponentInChildren<Text>().text = "<- Press Any Key ->";
-
-		listeningCrouch = false;
-		crouchButton.GetComponentInChildren<Text>().text = "" + InputManager.crouch;
-
 	}
 
 	public void ChangeCrouch ()
 	{
-		listeningLeft = false;
-		leftButton.GetComponentInChildren<Text>().text = "" + InputManager.left;
-
-		listeningRight = false;
-		rightButton.GetComponentInChildren<Text>().text = "" + InputManager.right;
-
-		listeningUp = false;
-		upButton.GetComponentInChildren<Text>().text = "" + InputManager.up;
-
-		listeningDown = false;
-		downButton.GetComponentInChildren<Text>().text = "" + InputManager.down;
-
-		listeningJump = false;
-		jumpButton.GetComponentInChildren<Text>().text = "" + InputManager.jump;
-
-		listeningAttack = false;
-		attackButton.GetComponentInChildren<Text>().text = "" + InputManager.attack;
-
-		listeningDash = false;
-		dashButton.GetComponentInChildren<Text>().text = "" + InputManager.dash;
+		SetText();
+		StopListening();
 
 		listeningCrouch = true;
-		crouchButton.GetComponentInChildren<Text>().text = "<- Press Any Key ->";
 
+		crouchButton.GetComponentInChildren<Text>().text = "<- Press Any Key ->";
+	}
+
+	public void ChangePause ()
+	{
+		SetText();
+		StopListening();
+
+		listeningPause = true;
+
+		pauseButton.GetComponentInChildren<Text>().text = "<- Press Any Key ->";
+	}
+
+	public void ChangeMap ()
+	{
+		SetText();
+		StopListening();
+
+		listeningMap = true;
+
+		mapButton.GetComponentInChildren<Text>().text = "<- Press Any Key ->";
 	}
 
 	void Update ()
@@ -285,6 +225,7 @@ public class InputMapper : MonoBehaviour
 		if(listeningLeft && Input.anyKeyDown)
 		{
 			listeningLeft = false;
+			listeningHor = false;
 			InputManager.left = GetInput();
 			leftButton.GetComponentInChildren<Text>().text = "" + GetInput();
 		}
@@ -292,13 +233,25 @@ public class InputMapper : MonoBehaviour
 		if(listeningRight && Input.anyKeyDown)
 		{
 			listeningRight = false;
+			listeningHor = false;
 			InputManager.right = GetInput();
 			rightButton.GetComponentInChildren<Text>().text = "" + GetInput();
+		}
+
+		if(listeningHor && GetAxis() != "")
+		{
+			listeningLeft = false;
+			listeningRight = false;
+			listeningHor = false;
+			InputManager.horizontal = GetAxis();
+			rightButton.GetComponentInChildren<Text>().text = GetAxis();
+			leftButton.GetComponentInChildren<Text>().text = GetAxis();
 		}
 
 		if(listeningUp && Input.anyKeyDown)
 		{
 			listeningUp = false;
+			listeningVert = false;
 			InputManager.up = GetInput();
 			upButton.GetComponentInChildren<Text>().text = "" + GetInput();
 		}
@@ -306,8 +259,19 @@ public class InputMapper : MonoBehaviour
 		if(listeningDown && Input.anyKeyDown)
 		{
 			listeningDown = false;
+			listeningVert = false;
 			InputManager.down = GetInput();
 			downButton.GetComponentInChildren<Text>().text = "" + GetInput();
+		}
+
+		if(listeningVert && GetAxis() != "")
+		{
+			listeningUp = false;
+			listeningDown = false;
+			listeningVert = false;
+			InputManager.vertical = GetAxis();
+			upButton.GetComponentInChildren<Text>().text = GetAxis();
+			downButton.GetComponentInChildren<Text>().text = GetAxis();
 		}
 
 		if(listeningJump && Input.anyKeyDown)
@@ -336,6 +300,20 @@ public class InputMapper : MonoBehaviour
 			listeningCrouch = false;
 			InputManager.crouch = GetInput();
 			crouchButton.GetComponentInChildren<Text>().text = "" + GetInput();
+		}
+
+		if(listeningPause && Input.anyKeyDown)
+		{
+			listeningPause = false;
+			InputManager.pause = GetInput();
+			pauseButton.GetComponentInChildren<Text>().text = "" + GetInput();
+		}
+
+		if(listeningMap && Input.anyKeyDown)
+		{
+			listeningMap = false;
+			InputManager.map = GetInput();
+			mapButton.GetComponentInChildren<Text>().text = "" + GetInput();
 		}
 	}
 
@@ -1169,5 +1147,123 @@ public class InputMapper : MonoBehaviour
 		#endregion
 
 		return KeyCode.None;
+	}
+
+	string GetAxis ()
+	{
+		if(Input.GetAxis("Joystick Axis 1") != 0)
+		{
+			return "Joystick Axis 1";
+		}
+		else if(Input.GetAxis("Joystick Axis 2") != 0)
+		{
+			return "Joystick Axis 2";
+		}
+		else if(Input.GetAxis("Joystick Axis 3") != 0)
+		{
+			return "Joystick Axis 3";
+		}
+		else if(Input.GetAxis("Joystick Axis 4") != 0)
+		{
+			return "Joystick Axis 4";
+		}
+		else if(Input.GetAxis("Joystick Axis 5") != 0)
+		{
+			return "Joystick Axis 5";
+		}
+		else if(Input.GetAxis("Joystick Axis 6") != 0)
+		{
+			return "Joystick Axis 6";
+		}
+		else if(Input.GetAxis("Joystick Axis 7") != 0)
+		{
+			return "Joystick Axis 7";
+		}
+		else if(Input.GetAxis("Joystick Axis 8") != 0)
+		{
+			return "Joystick Axis 8";
+		}
+		else if(Input.GetAxis("Joystick Axis 9") != 0)
+		{
+			return "Joystick Axis 9";
+		}
+		else if(Input.GetAxis("Joystick Axis 10") != 0)
+		{
+			return "Joystick Axis 10";
+		}
+		else if(Input.GetAxis("Joystick Axis 11") != 0)
+		{
+			return "Joystick Axis 11";
+		}
+		else if(Input.GetAxis("Joystick Axis 12") != 0)
+		{
+			return "Joystick Axis 12";
+		}
+		else if(Input.GetAxis("Joystick Axis 13") != 0)
+		{
+			return "Joystick Axis 13";
+		}
+		else if(Input.GetAxis("Joystick Axis 14") != 0)
+		{
+			return "Joystick Axis 14";
+		}
+		else if(Input.GetAxis("Joystick Axis 15") != 0)
+		{
+			return "Joystick Axis 15";
+		}
+		else if(Input.GetAxis("Joystick Axis 16") != 0)
+		{
+			return "Joystick Axis 16";
+		}
+		else if(Input.GetAxis("Joystick Axis 17") != 0)
+		{
+			return "Joystick Axis 17";
+		}
+		else if(Input.GetAxis("Joystick Axis 18") != 0)
+		{
+			return "Joystick Axis 18";
+		}
+		else if(Input.GetAxis("Joystick Axis 19") != 0)
+		{
+			return "Joystick Axis 19";
+		}
+		else if(Input.GetAxis("Joystick Axis 20") != 0)
+		{
+			return "Joystick Axis 20";
+		}
+		else if(Input.GetAxis("Joystick Axis 21") != 0)
+		{
+			return "Joystick Axis 21";
+		}
+		else if(Input.GetAxis("Joystick Axis 22") != 0)
+		{
+			return "Joystick Axis 22";
+		}
+		else if(Input.GetAxis("Joystick Axis 23") != 0)
+		{
+			return "Joystick Axis 23";
+		}
+		else if(Input.GetAxis("Joystick Axis 24") != 0)
+		{
+			return "Joystick Axis 24";
+		}
+		else if(Input.GetAxis("Joystick Axis 25") != 0)
+		{
+			return "Joystick Axis 25";
+		}
+		else if(Input.GetAxis("Joystick Axis 26") != 0)
+		{
+			return "Joystick Axis 26";
+		}
+		else if(Input.GetAxis("Joystick Axis 27") != 0)
+		{
+			return "Joystick Axis 27";
+		}
+		else if(Input.GetAxis("Joystick Axis 28") != 0)
+		{
+			return "Joystick Axis 28";
+		}
+
+		return "";
 	}
 }
