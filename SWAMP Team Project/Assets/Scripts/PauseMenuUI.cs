@@ -42,6 +42,6 @@ public class PauseMenuUI : MonoBehaviour
     }
     public void QuitGame()
     {
-        Application.Quit();
+        SceneManager.LoadScene("MainMenuTest");
     }
 }
