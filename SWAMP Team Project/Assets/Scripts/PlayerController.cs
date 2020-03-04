@@ -39,12 +39,16 @@ public class PlayerController : MonoBehaviour
     float waitToJump;
 	float groundDist = 0.05f;
 
+    float attackCooldown = 0;
+    [HideInInspector]
+    public bool facingLeft;
+    public float invulnerabilityTimer;
+
     void Start()
     {
 		rigBod = GetComponent<Rigidbody2D>();
         playerCol = GetComponent<BoxCollider2D>();
 		anim = GetComponent<Animator>();
-
     }
 
     void FixedUpdate()
@@ -77,7 +81,16 @@ public class PlayerController : MonoBehaviour
 	{
 		rigBod.gravityScale = 5;
 		rigBod.velocity = new Vector2(InputManager.HoldHorizontal() * moveSpeed, rigBod.velocity.y);
-	}
+
+        if(InputManager.HoldHorizontal() > 0)
+        {
+            facingLeft = false;
+        }
+        if (InputManager.HoldHorizontal() < 0)
+        {
+            facingLeft = true;
+        }
+    }
 
 	void Swim (float gravityModifier)
 	{
@@ -191,6 +204,33 @@ public class PlayerController : MonoBehaviour
             }
 
             AnimatePlayer();
+
+            Attack();
+
+            TakeDamage();
+
+            invulnerabilityTimer -= Time.deltaTime;
+        }
+    }
+
+    void TakeDamage ()
+    {
+        Collider2D[] enemies = Physics2D.OverlapBoxAll(transform.position, GetComponent<BoxCollider2D>().size * transform.localScale, 0);
+
+
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            if (enemies[i].GetComponent<EnemyManager>() && invulnerabilityTimer <= 0)
+            {
+                Stats.playerHealth -= 1;
+                invulnerabilityTimer = 0.5f;
+                return;
+            }
+        }
+
+        if(Stats.playerHealth <= 0)
+        {
+            Die();
         }
     }
 
@@ -296,6 +336,61 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+    void Attack ()
+    {
+        Collider2D[] enemies = new Collider2D[10];
+        
+        if(InputManager.PressAttack() && attackCooldown <= 0)
+        {
+            attackCooldown = 0.5f;
+
+            if (facingLeft)
+            {
+                enemies = Physics2D.OverlapCircleAll(transform.position + Vector3.left * 0.25f, 1f);
+            }
+            else if (!facingLeft)
+            {
+                enemies = Physics2D.OverlapCircleAll(transform.position + Vector3.right * 0.25f, 1f);
+            }
+
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                if (enemies[i].GetComponent<EnemyManager>())
+                {
+                    enemies[i].gameObject.GetComponent<EnemyManager>().Damage(Stats.playerStrength);
+                }
+            }
+
+            anim.SetTrigger("Attack1");
+        }
+
+        else if (InputManager.PressAttack() && attackCooldown > 0)
+        {
+            attackCooldown = 0;
+
+            if (facingLeft)
+            {
+                enemies = Physics2D.OverlapCircleAll(transform.position + Vector3.left * 0.25f, 1f);
+            }
+            else if (!facingLeft)
+            {
+                enemies = Physics2D.OverlapCircleAll(transform.position + Vector3.right * 0.25f, 1f);
+            }
+
+            for(int i = 0; i < enemies.Length; i++)
+            {
+                if (enemies[i].GetComponent<EnemyManager>())
+                {
+                    enemies[i].gameObject.GetComponent<EnemyManager>().Damage(Stats.playerStrength * 1.5f);
+                }
+            }
+
+            anim.SetTrigger("Attack2");
+        }
+
+        attackCooldown -= Time.deltaTime;
+    }
+
 	void CheckCollision ()
 	{
 		if (waitToJump >= 0)
@@ -342,8 +437,11 @@ public class PlayerController : MonoBehaviour
 		Gizmos.color = Color.green;
 		Gizmos.DrawWireCube(new Vector2(pCol.bounds.center.x, pCol.bounds.max.y), new Vector3((pCol.bounds.max.x - pCol.bounds.min.x) - groundDist, groundDist, 0));
 
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position + Vector3.left * 0.25f, 1f);
+        Gizmos.DrawWireSphere(transform.position - Vector3.left * 0.25f, 1f);
 
-		Gizmos.color = new Color(1, 0, 1);								  
+        Gizmos.color = new Color(1, 0, 1);								  
 		Gizmos.DrawWireSphere(new Vector2(pCol.bounds.min.x, pCol.bounds.center.y), groundDist);
 		Gizmos.DrawWireSphere(new Vector2(pCol.bounds.max.x, pCol.bounds.center.y), groundDist);
     }

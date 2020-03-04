@@ -55,6 +55,32 @@ public class CameraController : MonoBehaviour
 		blackScreen.GetComponent<Image>().color = Color.black;
 
 		StartCoroutine(FadeIn());
+
+        FindNearestBound();
+    }
+
+    public void FindNearestBound ()
+    {
+        float dist;
+        float closest = 10000;
+
+        for (int i = 0; i < bounds.Length; i++)
+        {
+            dist = Vector3.Distance(player.transform.position, bounds[i].transform.position);
+
+            if (dist < closest)
+            {
+                closest = dist;
+
+                roomBounds = bounds[i];
+                camSpeed = roomBounds.moveSpeed;
+
+                minX = bounds[i].transform.position.x - (bounds[i].size.x / 2) + width;
+                minY = bounds[i].transform.position.y - (bounds[i].size.y / 2) + height;
+                maxX = bounds[i].transform.position.x + (bounds[i].size.x / 2) - width;
+                maxY = bounds[i].transform.position.y + (bounds[i].size.y / 2) - height;
+            }
+        }
     }
 
 	IEnumerator FadeIn ()
@@ -72,10 +98,17 @@ public class CameraController : MonoBehaviour
         if (!noBounds)
         {
             IsPlayerInBounds();
-            AreBoundsBlocked();
         }
 
-        GetInput();
+        if (roomBounds != null)
+        {
+            if (!noBounds)
+            {
+                AreBoundsBlocked();
+            }
+
+            GetInput();
+        }
     }
 
     void IsPlayerInBounds()

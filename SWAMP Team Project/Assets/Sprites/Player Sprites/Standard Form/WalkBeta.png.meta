@@ -1,7 +1,37 @@
 fileFormatVersion: 2
 guid: 4c22bc01476b6dd4a9ea3d1262025671
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -7215041162244106330
+    second: WalkBeta_1
+  - first:
+      213: 5326499825690927380
+    second: WalkBeta_2
+  - first:
+      213: 1823967405758566234
+    second: WalkBeta_3
+  - first:
+      213: -6139637798009358885
+    second: WalkBeta_4
+  - first:
+      213: 1788295051050416936
+    second: WalkBeta_5
+  - first:
+      213: -2824130424266104363
+    second: WalkBeta_6
+  - first:
+      213: -5002059544928196363
+    second: WalkBeta_7
+  - first:
+      213: 2163925464269813968
+    second: WalkBeta_8
+  - first:
+      213: 2279502052458351996
+    second: WalkBeta_9
+  - first:
+      213: -1030211663658037162
+    second: WalkBeta_10
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +70,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +100,231 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: WalkBeta_1
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 510
+        width: 100
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4611564774cea894aad82e31c39d67ef
+      internalID: -7215041162244106330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkBeta_2
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 510
+        width: 98
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dee0418e92d4337459e9be32849f5bb8
+      internalID: 5326499825690927380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkBeta_3
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 505
+        width: 98
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6d923bc06f94ed47a94fb7494007524
+      internalID: 1823967405758566234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkBeta_4
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 508
+        width: 100
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a245cc4dfca93a644b7fcbd8e920fc91
+      internalID: -6139637798009358885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkBeta_5
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 509
+        width: 97
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2608775c96767504b8d4852c8b7f6815
+      internalID: 1788295051050416936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkBeta_6
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 509
+        width: 91
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3201b79f43f7276428c9cd4fe709084f
+      internalID: -2824130424266104363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkBeta_7
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 520
+        width: 102
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b51dcc133b1f4844192efb67cd5e8f82
+      internalID: -5002059544928196363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkBeta_8
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 513
+        width: 117
+        height: 223
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 545dd88d80283c744a17f7f3037cc059
+      internalID: 2163925464269813968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkBeta_9
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 514
+        width: 124
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a59be24de1ed50346b688123537c10f8
+      internalID: 2279502052458351996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WalkBeta_10
+      rect:
+        serializedVersion: 2
+        x: 1513
+        y: 517
+        width: 102
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e2db7fd4de3b5f428be451abb9c5568
+      internalID: -1030211663658037162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

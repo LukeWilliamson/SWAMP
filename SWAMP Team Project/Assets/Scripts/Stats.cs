@@ -10,9 +10,10 @@ public class Stats
     public static bool canMove = true;
 	public static int maxPlayerHealth = 3;
 	public static int playerHealth = 3;
+    public static float playerStrength = 1;
 
-	// Curent Door
-	public static int globalDoorID;
+    // Curent Door
+    public static int globalDoorID = 10000;
 	public static float doorOffset;
 
 	public static float masterVolume = 1;

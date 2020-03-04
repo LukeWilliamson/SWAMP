@@ -29,17 +29,9 @@ public class RoomTransition : MonoBehaviour
 
 		StartCoroutine(EnterRoom());
 
-		if(doorID == Stats.globalDoorID)
+        if (doorID == Stats.globalDoorID)
 		{
-			if(left || right)
-			{
-				player.transform.position = new Vector3(spawnPos.x, spawnPos.y + Stats.doorOffset);
-			}
-
-			if(up || down)
-			{
-				player.transform.position = new Vector3(spawnPos.x + Stats.doorOffset, spawnPos.y);
-			}
+			player.transform.position = new Vector3(transform.position.x + spawnPos.x, transform.position.y + spawnPos.y, 0);
 		}
     }
 
@@ -53,7 +45,7 @@ public class RoomTransition : MonoBehaviour
             loadRoom = true;
 			Stats.globalDoorID = doorID;
 
-			if(left)
+            /*if(left)
 			{
 				Stats.doorOffset = -Mathf.Abs(player.transform.position.x - spawnPos.x);
 			}
@@ -71,7 +63,7 @@ public class RoomTransition : MonoBehaviour
 			if(down)
 			{
 				Stats.doorOffset = -Mathf.Abs(player.transform.position.y - spawnPos.y);
-			}
+			}*/
 
             Stats.canMove = false;
         }
@@ -80,27 +72,26 @@ public class RoomTransition : MonoBehaviour
 	IEnumerator EnterRoom ()
 	{
 		yield return new WaitForSeconds(0.5f);
-		Stats.canMove = true;
+        Stats.canMove = true;
 		entering = false;
 	}
 
     void Update()
     {
-		if(Input.GetKeyDown(KeyCode.Escape))
-		{
-			UnityEngine.SceneManagement.SceneManager.LoadScene("Pause Menu", LoadSceneMode.Additive);
-		}
+		blackScreen = FindObjectOfType<CameraController>().blackScreen.GetComponent<Image>();
 
-		if(entering)
+		if(entering && doorID == Stats.globalDoorID)
 		{
 			if (left)
 			{
+                player.facingLeft = true;
 				player.transform.position += new Vector3(0.1f, 0, 0);
 			}
 
 			if (right)
 			{
-				player.transform.position += new Vector3(-0.1f, 0, 0);
+                player.facingLeft = false;
+                player.transform.position += new Vector3(-0.1f, 0, 0);
 			}
 
 			if (down)
@@ -112,15 +103,12 @@ public class RoomTransition : MonoBehaviour
 			{
 				player.transform.position += new Vector3(0, -0.1f, 0);
 			}
-
-			blackScreen = FindObjectOfType<CameraController>().blackScreen.GetComponent<Image>();
 		}
 		else
-		{
+        {
 			IsPlayerInBounds();
 		}
-
-
+        
         if (loadRoom)
         {
             fadeTime -= Time.deltaTime;
@@ -160,7 +148,7 @@ public class RoomTransition : MonoBehaviour
         Gizmos.color = Color.blue;
 		Gizmos.DrawWireCube(transform.position, size);
 		Gizmos.color = Color.yellow;
-		Gizmos.DrawSphere(spawnPos, 0.1f);
+		Gizmos.DrawSphere(new Vector3(transform.position.x + spawnPos.x, transform.position.y + spawnPos.y, 0), 0.1f);
         #endif
     }
 
