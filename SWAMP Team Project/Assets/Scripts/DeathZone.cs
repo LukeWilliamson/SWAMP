@@ -34,8 +34,10 @@ public class DeathZone : MonoBehaviour
 			}
 			else
 			{
-				UnityEditor.EditorApplication.isPlaying = false;
-			}
+                #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+                #endif
+            }
 		}
 	}
 }
