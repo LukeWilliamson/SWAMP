@@ -116,6 +116,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(InputManager.PressPause())
+        {
+            Application.Quit();
+        }
+
         if (Stats.canMove)
         {
             if (waitToJump >= 0)
