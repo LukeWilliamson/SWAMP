@@ -522,7 +522,7 @@ GameObject:
   - component: {fileID: 726444595}
   - component: {fileID: 726444596}
   m_Layer: 8
-  m_Name: Untitled-5
+  m_Name: enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.5
-  stoppingDistance: 20
+  stoppingDistance: 15
   retreatDistance: 10
   startTimeBTWshots: 2
   projectile: {fileID: 4232343958411997097, guid: cbe812bbf7cbceb41be505a711293888,

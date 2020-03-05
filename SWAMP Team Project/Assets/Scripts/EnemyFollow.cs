@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour
 {
+    public bool isTouched = false;
     public float speed;
     public float stoppingDistance;
     public float retreatDistance;
@@ -45,9 +46,10 @@ public class EnemyFollow : MonoBehaviour
         {
             timeBTWshots -= Time.deltaTime;
         }
+        if (isTouched)
+        {
+            Destroy(GameObject);
+        }
     }
-    
-
-
-
+ 
 }
