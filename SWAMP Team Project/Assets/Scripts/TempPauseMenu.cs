@@ -40,8 +40,8 @@ public class PauseMenu : MonoBehaviour
         isPaused = true;
     }
     public void mainMenu()
-    {
-        SceneManager.LoadScene("Tutorial");
+    {        
+        SceneManager.LoadScene("MainMenuTest", LoadSceneMode.Single);
     }
     public void quit()
     {

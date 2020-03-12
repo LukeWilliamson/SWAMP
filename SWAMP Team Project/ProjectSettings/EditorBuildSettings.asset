@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/New York Scenes/MainMenuTest.unity
+    guid: 9281bb70f4bfad24ea875c40dd8472c9
+  - enabled: 1
     path: Assets/Scenes/New York Scenes/Tutorial.unity
     guid: 4264dca75525c9844b585340eccf790f
   - enabled: 1
@@ -50,9 +53,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/New York Scenes/CityStreets1.unity
     guid: 83b3a6a2f9c1c2445bfc225073c65a3b
-  - enabled: 1
-    path: Assets/Scenes/New York Scenes/MainMenuTest.unity
-    guid: 9281bb70f4bfad24ea875c40dd8472c9
   - enabled: 1
     path: Assets/Scenes/New York Scenes/CityStreets3.unity
     guid: 14ab96d43f5cf9341bc3f9fc857578bb
