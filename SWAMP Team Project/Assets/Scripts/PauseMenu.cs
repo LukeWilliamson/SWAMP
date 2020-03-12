@@ -12,7 +12,7 @@ public enum SliderType
 	Sounds
 }
 
-public class PauseMenu : MonoBehaviour
+public class PauseMenu2 : MonoBehaviour //TODO: this needs to be fixed heavily
 {
 	[Header ("Audio")]
 	public bool audio;
