@@ -56,9 +56,9 @@ public class RespawnManager : MonoBehaviour
 	{
 		dying = true;
 		fadeTime -= Time.deltaTime;
-		player.Die();
+		player.rigBod.velocity = Vector2.zero;
 
-		if(fadeTime > 0)
+        if (fadeTime > 0)
 		{
 			blackScreen.color = Color.Lerp(blackScreen.color, Color.black, Time.deltaTime * 6);
 		}

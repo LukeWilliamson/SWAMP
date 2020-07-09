@@ -20,6 +20,8 @@ public class PlayAnimOnCollide : MonoBehaviour
     public AudioClip soundToPlay;
     AudioSource aud;
 
+    public bool freezePlayer = false;
+
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
@@ -51,6 +53,11 @@ public class PlayAnimOnCollide : MonoBehaviour
                 aud.Play();
                 acceptingTrigger = false;
             }
+
+            if (freezePlayer)
+            {
+                Stats.canMove = false;
+            }
         }
     }
 
@@ -72,7 +79,7 @@ public class PlayAnimOnCollide : MonoBehaviour
     {
         if (showBounds)
         {
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.yellow;
             Gizmos.DrawWireCube(pos, size);
         }
     }

@@ -54,7 +54,7 @@ public class RatEnemy : MonoBehaviour
         rigBod.velocity = Vector3.zero;
         anim.SetTrigger("StopTrigger");
 
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(waitTime + Random.Range(0, waitTime));
 
         StartCoroutine(movingRat());
     }

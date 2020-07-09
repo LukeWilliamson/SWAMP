@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1664964852801741016}
   - component: {fileID: 2510737695083118289}
   - component: {fileID: 6443531764449093909}
+  - component: {fileID: 8289242456523476259}
   m_Layer: 0
   m_Name: Breakable Wall
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8467977616973366803}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 69.77, y: -24.1, z: 1.61}
-  m_LocalScale: {x: 0.09935735, y: 0.49912643, z: 0.49912643}
+  m_LocalScale: {x: 0.29742628, y: 0.29742628, z: 0.29742628}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -47,6 +48,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -71,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bf3ad2cd622570443b1d3ef7d30193ac, type: 3}
-  m_Color: {r: 0.7169812, g: 0.15895337, b: 0.15895337, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 94aabc414dfe1b94280a77d720ad0467, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -95,18 +97,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.49498725, y: 0.45829964}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.95, y: 8.06}
+    oldSize: {x: 8.8, y: 8.8}
     newSize: {x: 16, y: 9}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.95, y: 8.06}
+  m_Size: {x: 7.119099, y: 11.543062}
   m_EdgeRadius: 0
 --- !u!114 &6443531764449093909
 MonoBehaviour:
@@ -120,4 +122,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de981af411d5b61409bf6a32b35c6c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakParticles: {fileID: 0}
+  breakParticles: {fileID: 1899602158102159439, guid: 726492da657e8914d9de0fa25bd54665,
+    type: 3}
+  anim: {fileID: 0}
+  trigger: 
+  wallID: 1
+--- !u!114 &8289242456523476259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8467977616973366803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88b1d76e908c0d49bab06fb99b49bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  entranceAnimation: {fileID: 0}
+  beginAnimation: {fileID: 0}
+  bossMusic: {fileID: 0}
+  requiresTrigger: 0
+  damageValue: 0

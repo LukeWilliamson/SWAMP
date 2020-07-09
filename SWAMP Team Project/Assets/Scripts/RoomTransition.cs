@@ -21,52 +21,35 @@ public class RoomTransition : MonoBehaviour
     float fadeTime = 1;
     bool loadRoom = false;
 
-	bool entering = true;
+	bool entering = false;
 
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
 
-		StartCoroutine(EnterRoom());
-
         if (doorID == Stats.globalDoorID)
 		{
-			player.transform.position = new Vector3(transform.position.x + spawnPos.x, transform.position.y + spawnPos.y, 0);
+            float heightOffset = ((player.GetComponent<BoxCollider2D>().size.y / 2) - player.GetComponent<BoxCollider2D>().offset.y) * player.transform.localScale.y;
+			player.transform.position = new Vector3(transform.position.x + spawnPos.x, transform.position.y + spawnPos.y + heightOffset, 0);
 		}
+
+        if (IsPlayerInBounds())
+        {
+            entering = true;
+        }
     }
 
-    void IsPlayerInBounds()
+    bool IsPlayerInBounds()
     {
         if (transform.position.x + (size.x / 2) > player.transform.position.x &&
                 transform.position.x - (size.x / 2) < player.transform.position.x &&
                 transform.position.y + (size.y / 2) > player.transform.position.y &&
                 transform.position.y - (size.y / 2) < player.transform.position.y)
         {
-            loadRoom = true;
-			Stats.globalDoorID = doorID;
-
-            /*if(left)
-			{
-				Stats.doorOffset = -Mathf.Abs(player.transform.position.x - spawnPos.x);
-			}
-
-			if(right)
-			{
-				Stats.doorOffset = Mathf.Abs(player.transform.position.x - spawnPos.x);
-			}
-
-			if(up)
-			{
-				Stats.doorOffset = Mathf.Abs(player.transform.position.y - spawnPos.y);
-			}
-
-			if(down)
-			{
-				Stats.doorOffset = -Mathf.Abs(player.transform.position.y - spawnPos.y);
-			}*/
-
-            Stats.canMove = false;
+            return true;
         }
+
+        return false;
     }
 
 	IEnumerator EnterRoom ()
@@ -78,9 +61,14 @@ public class RoomTransition : MonoBehaviour
 
     void Update()
     {
-		blackScreen = FindObjectOfType<CameraController>().blackScreen.GetComponent<Image>();
+        if(entering && !IsPlayerInBounds())
+        {
+            StartCoroutine(EnterRoom());
+        }
 
-		if(entering && doorID == Stats.globalDoorID)
+		blackScreen = FindObjectOfType<CameraController>().blackScreen.GetComponent<Image>();
+        
+        if (entering && doorID == Stats.globalDoorID)
 		{
 			if (left)
 			{
@@ -106,7 +94,34 @@ public class RoomTransition : MonoBehaviour
 		}
 		else
         {
-			IsPlayerInBounds();
+			if(IsPlayerInBounds() && roomToLoad != "None")
+            {
+
+                loadRoom = true;
+                Stats.globalDoorID = doorID;
+
+                /*if(left)
+                {
+                    Stats.doorOffset = -Mathf.Abs(player.transform.position.x - spawnPos.x);
+                }
+
+                if(right)
+                {
+                    Stats.doorOffset = Mathf.Abs(player.transform.position.x - spawnPos.x);
+                }
+
+                if(up)
+                {
+                    Stats.doorOffset = Mathf.Abs(player.transform.position.y - spawnPos.y);
+                }
+
+                if(down)
+                {
+                    Stats.doorOffset = -Mathf.Abs(player.transform.position.y - spawnPos.y);
+                }*/
+
+                Stats.canMove = false;
+            }
 		}
         
         if (loadRoom)
@@ -148,7 +163,7 @@ public class RoomTransition : MonoBehaviour
         Gizmos.color = Color.blue;
 		Gizmos.DrawWireCube(transform.position, size);
 		Gizmos.color = Color.yellow;
-		Gizmos.DrawSphere(new Vector3(transform.position.x + spawnPos.x, transform.position.y + spawnPos.y, 0), 0.1f);
+		Gizmos.DrawWireSphere(new Vector3(transform.position.x + spawnPos.x, transform.position.y + spawnPos.y, 0), 0.1f);
         #endif
     }
 
