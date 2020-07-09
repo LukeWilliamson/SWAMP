@@ -8,8 +8,16 @@ public class ScreenMasks : MonoBehaviour
 	PlayerController player;
 	SpriteRenderer rend;
 
+    public bool oneTime;
+    public int oneTimeID;
+
 	void Start () 
 	{
+        if(oneTime && BreakableWallManager.wallsAreHidden[oneTimeID])
+        {
+            Destroy(this.gameObject);
+        }
+
 		player = FindObjectOfType<PlayerController>();
 		rend = GetComponent<SpriteRenderer>();
 
@@ -28,6 +36,12 @@ public class ScreenMasks : MonoBehaviour
 		if(IsPlayerInBounds())
 		{
 			rend.color = Color.Lerp(rend.color, Color.clear, Time.deltaTime * 7);
+
+            if(rend.color == Color.clear && oneTime)
+            {
+                BreakableWallManager.wallsAreHidden[oneTimeID] = true;
+                Destroy(this.gameObject);
+            }
 		}
 		else
 		{

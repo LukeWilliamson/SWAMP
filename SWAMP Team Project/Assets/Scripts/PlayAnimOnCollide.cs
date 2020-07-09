@@ -8,7 +8,8 @@ public class PlayAnimOnCollide : MonoBehaviour
     public Vector2 pos;
     public Vector2 size;
     PlayerController player;
-    bool acceptingTrigger;
+    bool acceptingTrigger = true;
+    public bool playOnce;
 
     [Header("Events")]
     public bool playAnim;
@@ -18,6 +19,8 @@ public class PlayAnimOnCollide : MonoBehaviour
     public bool playSound;
     public AudioClip soundToPlay;
     AudioSource aud;
+
+    public bool freezePlayer = false;
 
     void Start()
     {
@@ -40,13 +43,20 @@ public class PlayAnimOnCollide : MonoBehaviour
             if(playAnim)
             {
                 anim.Play(animToPlay.name);
-                acceptingTrigger = false;
+
+                if(playOnce)
+                    acceptingTrigger = false;
             }
 
             if (playSound)
             {
                 aud.Play();
                 acceptingTrigger = false;
+            }
+
+            if (freezePlayer)
+            {
+                Stats.canMove = false;
             }
         }
     }
@@ -69,8 +79,8 @@ public class PlayAnimOnCollide : MonoBehaviour
     {
         if (showBounds)
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(transform.position, size);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(pos, size);
         }
     }
 }

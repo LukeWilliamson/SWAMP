@@ -1,0 +1,349 @@
+fileFormatVersion: 2
+guid: 9553cf77ca69d344da9095b95db50c02
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3589456914267935857
+    second: SwordAnimation_0
+  - first:
+      213: -9195723052211576767
+    second: SwordAnimation_1
+  - first:
+      213: 1822875356339403581
+    second: SwordAnimation_2
+  - first:
+      213: -6155733268036750911
+    second: SwordAnimation_3
+  - first:
+      213: 3128902664235801212
+    second: SwordAnimation_4
+  - first:
+      213: 3493995967750090074
+    second: SwordAnimation_5
+  - first:
+      213: -3023344593286910762
+    second: SwordAnimation_6
+  - first:
+      213: 9086363544773933605
+    second: SwordAnimation_7
+  - first:
+      213: -5740794597338361590
+    second: SwordAnimation_8
+  - first:
+      213: -7597532290248381841
+    second: SwordAnimation_9
+  - first:
+      213: 4311121188281518209
+    second: SwordAnimation_10
+  - first:
+      213: 3958849118958784753
+    second: SwordAnimation_11
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SwordAnimation_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 248
+        width: 145
+        height: 212
+      alignment: 9
+      pivot: {x: 0.75544405, y: 0.5371927}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9780c84e6ea9bd3449e946302bba0036
+      internalID: 3589456914267935857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwordAnimation_1
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 255
+        width: 140
+        height: 206
+      alignment: 9
+      pivot: {x: 0.71630096, y: 0.5221734}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3e3d3efa17e4f54c9e1a20c3adf0846
+      internalID: -9195723052211576767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwordAnimation_2
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 237
+        width: 187
+        height: 224
+      alignment: 9
+      pivot: {x: 0.56406504, y: 0.5548604}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 057308ee67d3902458d7615d742e5ac1
+      internalID: 1822875356339403581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwordAnimation_3
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 242
+        width: 165
+        height: 215
+      alignment: 9
+      pivot: {x: 0.31526175, y: 0.51587385}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27d5ce243cf50ac4380b382f1d36bacb
+      internalID: -6155733268036750911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwordAnimation_4
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 248
+        width: 147
+        height: 208
+      alignment: 9
+      pivot: {x: 0.35965112, y: 0.5158505}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed1bef5e051a44047be37ce9bea62f2b
+      internalID: 3128902664235801212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwordAnimation_6
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 19
+        width: 140
+        height: 211
+      alignment: 9
+      pivot: {x: 0.33273435, y: 0.4978023}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a34359f1811c45b4a94af4275f772e93
+      internalID: -3023344593286910762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwordAnimation_7
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 18
+        width: 104
+        height: 213
+      alignment: 9
+      pivot: {x: 0.4062092, y: 0.5015534}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93b26f21dcd5ec04a8c3539641412080
+      internalID: 9086363544773933605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwordAnimation_8
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 18
+        width: 83
+        height: 216
+      alignment: 9
+      pivot: {x: 0.40085205, y: 0.49682516}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5693d10125868c64faac2b5a3efb093f
+      internalID: -5740794597338361590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwordAnimation_9
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 18
+        width: 69
+        height: 215
+      alignment: 9
+      pivot: {x: 0.42586705, y: 0.4508444}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d649172cac978a74aa29fbcf97042c02
+      internalID: -7597532290248381841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwordAnimation_10
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 18
+        width: 73
+        height: 218
+      alignment: 9
+      pivot: {x: 0.52133054, y: 0.48470888}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9218165b1e3dc8a4797e0dd293715dc0
+      internalID: 4311121188281518209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -6,7 +6,8 @@ using UnityEngine;
 public enum zoneType
 {
 	water,
-	scalableBackground
+	scalableBackground,
+    ladder
 }
 
 public class WaterZone : MonoBehaviour 
@@ -26,7 +27,12 @@ public class WaterZone : MonoBehaviour
 			{
 				other.gameObject.GetComponent<PlayerController>().scalingBackground = true;
 			}
-		}
+            else if (typeOfZone == zoneType.ladder)
+            {
+                other.gameObject.GetComponent<PlayerController>().nearLadder = true;
+                other.gameObject.GetComponent<PlayerController>().ladder = this.gameObject;
+            }
+        }
 	}
 
 	void OnTriggerExit2D (Collider2D other)
@@ -41,6 +47,11 @@ public class WaterZone : MonoBehaviour
 			{
 				other.gameObject.GetComponent<PlayerController>().scalingBackground = false;
 			}
-		}
+            else if (typeOfZone == zoneType.ladder)
+            {
+                other.gameObject.GetComponent<PlayerController>().nearLadder = false;
+                other.gameObject.GetComponent<PlayerController>().ladder = null;
+            }
+        }
 	}
 }

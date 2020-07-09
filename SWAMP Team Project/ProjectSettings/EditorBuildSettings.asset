@@ -6,6 +6,66 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/New York Scenes/New York Tutorial.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/UI Scenes/MainMenu.unity
+    guid: 9281bb70f4bfad24ea875c40dd8472c9
+  - enabled: 1
+    path: Assets/Scenes/New York Scenes/Tutorial.unity
+    guid: 4264dca75525c9844b585340eccf790f
+  - enabled: 1
+    path: Assets/Scenes/New York Scenes/CityStreets1.unity
+    guid: 83b3a6a2f9c1c2445bfc225073c65a3b
+  - enabled: 1
+    path: Assets/Scenes/New York Scenes/OutsideHub.unity
+    guid: 47aca1e9d313d5a41809d958bde8c13e
+  - enabled: 1
+    path: Assets/Scenes/New York Scenes/CityStreets2.unity
+    guid: 0e4a7933be50f464eaa86291a3411f3f
+  - enabled: 1
+    path: Assets/Scenes/New York Scenes/CityStreets3.unity
+    guid: 14ab96d43f5cf9341bc3f9fc857578bb
+  - enabled: 1
+    path: Assets/Scenes/New York Scenes/GrandCentralStation.unity
+    guid: 1c55e436ab284b940a286e60cb95bd2b
+  - enabled: 1
+    path: Assets/Scenes/New York Scenes/UpperGrandCentral.unity
+    guid: 034d933b31eacf84bb7d16339fda9f32
+  - enabled: 1
+    path: Assets/Scenes/New York Scenes/CityStreets4.unity
+    guid: 6d1e3fb7dc97a5b4d845b8acc1259b6f
+  - enabled: 1
+    path: Assets/Scenes/New York Scenes/CityEdge.unity
+    guid: 4a403f0fc3ab9d94dbd184f61976d936
+  - enabled: 1
+    path: Assets/Scenes/New York Scenes/CityEdgeSewer.unity
+    guid: ac0c54aa02ed408488b488d22f644e3b
+  - enabled: 1
+    path: Assets/Scenes/Desert/Dunes1.unity
+    guid: b39f81cb2db14604bb7b55e96665d2d1
+  - enabled: 1
+    path: Assets/Scenes/Desert/DesertCamp.unity
+    guid: 9c2c8510514ad6f48ab0210626a97ace
+  - enabled: 1
+    path: Assets/Scenes/Desert/Rocks1.unity
+    guid: 5a94558786877914babfe3ee7486a1c1
+  - enabled: 1
+    path: Assets/Scenes/Desert/Dunes2.unity
+    guid: 586045c8d7b0ac24fbe47be9bdf9c3ac
+  - enabled: 1
+    path: Assets/Scenes/Desert/DesertOasis.unity
+    guid: e5bf4bd782e02d44d81ce8d483eea235
+  - enabled: 1
+    path: Assets/Scenes/Sewers/Sewers 14.unity
+    guid: 584587d29575d1a459e8f443bff775a5
+  - enabled: 1
+    path: Assets/Scenes/Ocean Scenes/Deep Sea 2.unity
+    guid: 71d08fe1194b3694f93123d95ce23abb
+  - enabled: 1
+    path: Assets/Scenes/Ocean Scenes/Atlantis Entrance.unity
+    guid: 5dfb347fa9403ad44b0a7423bb470273
+  - enabled: 1
+    path: Assets/Scenes/Desert/Pyramid/PyramidEntrance.unity
+    guid: e3bee8bc39f4e1244aee399a59421f90
+  - enabled: 1
+    path: Assets/Scenes/Desert/PyramidOutside.unity
+    guid: 01fa5b752d246054d9e4179a4173a577
   m_configObjects: {}
